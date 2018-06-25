@@ -38,7 +38,7 @@
       <p>Student Picture</p>
 
       <% for(let i = 0; i < imgstu.length; i++) { %>
-        <div class="one">
+        <div class="one" id="pic">
           <span>Student ID:
             <%= imgstu[i].stuid %>
           </span>
@@ -56,7 +56,7 @@
     </div>
     <div class="showstu">
       <p>Student Message</p>
-      <table border="1px">
+      <table border="1px" id="tabl">
         <tr>
           <th>student_id</th>
           <th>name</th>
@@ -93,7 +93,45 @@
       <button type="submit">submit</button>
     </form>
   </div>
-
+  <script>
+    function loadXMLDoc() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+          xmlhttp = new XMLHttpRequest();
+        }
+        else {
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log(xmlhttp.responseText);
+            var data = JSON.parse(xmlhttp.responseText);
+            console.log(data);
+          }
+        }
+        xmlhttp.open("GET", "/all", true);
+        xmlhttp.send();
+      }
+      loadXMLDoc();
+      function loadXMLDoc() {
+          var xmlhttp;
+          if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+          }
+          else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+              console.log(xmlhttp.responseText);
+              var data = JSON.parse(xmlhttp.responseText);
+              console.log(data);
+            }
+          }
+          xmlhttp.open("GET", "/allPic", true);
+          xmlhttp.send();
+        }
+  </script>
 </body>
 
 </html>

@@ -60,6 +60,24 @@ router.get('/', function (req, res, next) {
       }
     })
   })
+  .get('/all', (req, res, next) => {
+    con.query('select * from student', (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(JSON.stringify(result));
+      }
+    })
+  })
+  .get('/allPic', (req, res, next) => {
+    con.query('select * from img', (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(JSON.stringify(result));
+      }
+    })
+  })
   .post('/addstudent', (req, res, next) => {
     con.query('insert into student values(?,?)', [req.body.stuid, req.body.stuname], (err, result) => {
       if (err) {
